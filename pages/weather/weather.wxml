@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class="container" wx:if='{{weather.icon}}'>
+  <text>天气 : {{weather.text}}</text>
+  <text>城市 : {{city.name}}</text>
+  <image class="image" wx:if='{{weather.icon}}' src="../../image/{{weather.icon}}.png"></image>
+</view>
+

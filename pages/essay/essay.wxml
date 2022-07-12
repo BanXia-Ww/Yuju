@@ -1,0 +1,34 @@
+<!--pages/essay/essay.wxml-->
+
+  <!-- 搜索栏 搜索可以跳转搜索内容-->
+  <view class="nav_search">
+    <view class="input_panel">
+      <image src="https://jxtf-store.oss-cn-hangzhou.aliyuncs.com/car-image/wxapp/seach.png"  style="width: 40rpx; height: 40rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"></image>
+      <input focus='{{autoFocus}}' bindinput="setsearchvalue" type="text" name="search" bindblur="hideHistory" bind:focus="showHistory" placeholder="开启你的育橘之旅..." value="{{inputData}}" style="width: 414rpx; height: 40rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"></input>
+    </view>
+    <text class="search" bindtap="search">搜索</text>
+  </view>
+
+
+<view class="v-container" wx:for="{{list}}" wx:for-item="itemName" wx:for-index="i" bindtap="gototest" data-gid="{{itemName.id}}" data-count="{{i}}">
+
+  <view class="v1">
+    <text class="title1">{{itemName.title}}</text>
+    <view class="v11"><text class="title2">{{itemName.zhaiyao}}</text></view>
+
+    <view class="collection_share_container">
+      <view class="collection_share">
+        <text class="title3">{{itemName.date}}</text>
+
+        <image catchtap='Collect' wx:if="{{!itemName.isCollected}}" data-id="{{itemName.id}}"
+          data-count="{{i}}" style="float: inline-end; width: 25px; height: 20px;" src='../../image/sc.png'></image>
+
+        <image catchtap='disCollect' wx:if="{{itemName.isCollected}}" data-id="{{itemName.id}}" data-count="{{i}}" style="float: inline-end; width: 25px; height: 23px;" src='../../image/ysc.png'></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="v2">
+    <image src="{{itemName.firstpic}}"></image>
+  </view>
+</view>

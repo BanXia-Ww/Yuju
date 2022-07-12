@@ -1,0 +1,19 @@
+<!--pages/add/add.wxml-->
+<!-- 标题一行 -->
+<view class="title1">
+    <!-- 左边“标题” -->
+    <view class="left">标题</view>
+    <!-- 右边标题的输入 -->
+    <view class="right"><textarea type="text" placeholder="为你的收藏夹添加一个标题" bindinput="editName"></textarea></view>
+</view>
+<view class="hr2"></view>
+<!-- 文件夹简介部分 -->
+<view class="title2">
+    <!-- 左边“简介” -->
+    <view class="left">简介</view>
+    <!-- 右边简介的输入 -->
+    <view class="right_jian"><input type="text" placeholder="简要介绍此文件夹吧" bindinput="editName"></input></view>
+</view>
+<view class="hr2"></view>
+<button class="sure">确认</button>
+

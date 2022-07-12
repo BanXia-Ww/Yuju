@@ -1,0 +1,27 @@
+<!--照相识别-->
+<view class='camera'>
+  <!--<image src="/image/pz.png" mode="widthFix"></image>-->
+  <camera wx:if="{{isAuth}}" device-position="back" flash="off" binderror="error"></camera>
+</view>
+<!--返回键，跳转到首页-->
+<!--
+  <view class="back"  bindtap="gotoindex">
+  <image src="/image/back.png" style="width: 63rpx; height: 63rpx; display: block; box-sizing: border-box"></image>
+</view>
+-->
+<view class="an">
+<!--跳转到“我的”页面，查看识别历史-->
+<button class="history" bindtap="gotomine">
+    <image src="/image/ls.png"></image>
+  </button>
+  <!--拍摄按钮-->
+  <button class="takePhoto" type="primary" bindtap="takePhoto">
+    <image src="/image/pz.png"></image>
+  </button>
+  <!--获取本地照片-->
+  <button class="takeLocalPhoto" type="primary" bindtap="takeLocalPhoto">
+    <image src="/image/xc.png"></image>
+  </button>
+</view>
+
+

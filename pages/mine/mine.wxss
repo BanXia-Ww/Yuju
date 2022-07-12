@@ -1,0 +1,255 @@
+/* pages/mine/mine.wxss */
+page{
+	background-color: #8ab470;
+	z-index: 888;
+}
+
+.active .title {
+	color: #000000;
+	border-bottom: 2px solid #f77b3c;  
+    border-top:0px;  
+    border-left:0px;  
+    border-right:0px;  
+}
+
+.head{
+  widows: 100%;
+  width: 100%;
+  height: 180px;
+}
+
+.headimage
+{
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  height: 180px;
+  width: 100%;
+  z-index: -999;
+}
+.name {
+	font-size: 18px;
+	padding-top: 65rpx;
+	padding-left: 10rpx;
+}
+
+.userinfo {
+	display: flex;
+	flex-direction: row;
+	align-items: left;
+	color: rgb(255, 250, 250);
+	padding-top: 18px;
+	padding-left: 20px;
+  }
+
+.userinfo-avatar {
+	overflow: hidden;
+	width: 130rpx;
+	height: 130rpx;
+	margin: 20rpx;
+	border-radius: 50%;
+	border: #fff solid 2px;
+  }
+
+  .wellcome {
+	font-size: 13px;
+	color: rgb(255, 250, 250);
+	padding-left: 28px;
+}
+
+.totall{
+	display: flex;
+	z-index: 1;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 1px;
+	padding-left: 30%;
+}
+.title{
+	width: 66px;
+	height: 23px;
+	color: rgb(177, 177, 177);
+	margin-right: 16px;
+}
+
+
+.hr2{
+	margin-top: 10px;
+	height: 1px;
+	background-color: rgb(177, 177, 177);
+	opacity: 0.5;
+}
+.shoucang
+{
+	width: 100%;
+	height: 110vh;
+	border-radius: 15px 15px 0px 0px;
+	padding-top: 15px;
+	background-color: #f4f4f4;
+}
+
+.add {
+	width: 91%;
+	height: 30px;
+	margin: 10px;
+	background-color: #fff;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	padding-top: 10px;
+	padding-left: 15px;
+	font-size: 14px;
+}
+
+.fenlei {
+	width: 95%;
+	height: 200px;
+	margin: 10px;
+	background-color: #fff;
+	border-radius: 10px;
+}
+.neirong {
+	display: flex;
+	flex-direction: row;
+	padding-top: 5px;
+	padding-left: 15px;
+	font-size: 15px;
+}
+.right {
+	position: absolute;
+	right: 15px;
+	color: rgb(151, 151, 151);
+}
+
+.icon{
+	width:100%;
+	height: 100%;
+	border: none;
+	top: -40px; 
+}
+
+.listimage {
+	width: 40px; 
+	height: 200px;
+	display: inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
+	left: -100px;
+	margin-left: 15px;
+	margin-right: 65px;
+	margin-top: 58px;
+}
+.title_s {
+	font-size: 14px;
+	font-weight: 500;
+	width: 100px;
+	height: 17px;
+	top: -37px;
+	position:relative;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.title_s2 {
+	font-size: 13px;
+	font-weight: 500;
+	width: 100px;
+	height: 15px;
+	margin-top: 8px;
+}
+
+.title_name{
+	font-size: 13px;
+	margin-top: 10px;
+	color: rgb(126, 126, 126);
+	top: -40px;
+	width: 80px;
+	position:relative;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+scroll-view {
+	width: 80%;
+	white-space: nowrap;
+}
+.collect{
+	margin-left: 100px;
+	top: -55px;
+	position:relative;
+}
+
+/* 历史记录 */
+.bg{
+	height: 100%;
+	background-color: #f4f4f4;
+	z-index: 666;
+}
+
+.starttitle{
+	color: black;
+	font-size: 15px;
+}
+
+.history{
+	width: 95%;
+	height: 100%;
+	margin: 10px 10px 0 10px;
+}
+
+.container1{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	/*justify-content: space-between;*/
+	flex-wrap: wrap;/* 弹性盒子换行显示 */
+	justify-content:space-evenly; /* 缝隙均等 */
+	padding-top: 13px;
+}
+
+.item{
+	height: 253px;
+	width: 160px;
+	margin-bottom: 10px;/* 上右下左 */
+	text-align: left;
+	background-color: #fff;
+	border-radius: 6px;
+	/*margin-left: 13px;
+	margin-right: 13px;*/
+}
+
+.photo{
+	width: 160px;
+	height: 190px;
+	border-radius: 6px 6px 0 0;
+}
+
+.disease_name{
+	color: black;
+	font-size: 13px;
+	font-weight: 500;
+	height: 16px;
+	margin: 1px 0 0 3px;/* 上右下左 */
+	width: 150px;
+	position:relative;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.disease_s{
+	font-size: 13px;
+	margin: 3px 0 0 3px;
+	color: rgb(126, 126, 126);
+	width: 150px;
+	position:relative;
+	overflow: hidden; /* 隐藏超出的内容 */
+	text-overflow: ellipsis; /* 多行 */
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+

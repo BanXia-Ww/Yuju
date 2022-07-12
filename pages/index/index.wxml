@@ -1,0 +1,80 @@
+<view class="head"> 
+  <!-- 搜索栏 搜索可以跳转各类文章-->
+ <view class="search" bindtap="gotoessay" style="width: 732rpx; height: 70rpx; display: flex; box-sizing: border-box;"> 
+  <view class="search_left" style="width: 619rpx; height: 61rpx; display: flex; box-sizing: border-box;">
+    <input type="text" placeholder="开启你的育橘之旅..." bindinput="editName" style="width: 575rpx; height: 47rpx; display: block; box-sizing: border-box;"></input></view>
+    <!-- 搜索按钮 -->
+    <view class="search_right">
+    <image src="https://jxtf-store.oss-cn-hangzhou.aliyuncs.com/car-image/wxapp/seach.png" style="padding-top: 10px; padding-left: 20px;" ></image></view>
+ </view>
+   <!-- 滑动海报 -->
+      <view class="haibao">
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{intrtval}}" duration="{{duration}}">
+          <block wx:for="{{imgUrls}}">
+            <swiper-item>
+              <image src="{{item}}" class="slide-image" style="width: 743rpx; height: 300rpx; ">
+              </image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+</view>
+<!-- 天气预报 显示今日天气、地点等 -->
+<view class="container">
+  <view class="weather today">
+    <view class="theme">
+      <weather size="sm" theme="dark" />
+    </view>
+
+    <!--<view class='weather_icon'>
+      <image class="image" wx:if='{{weather.icon}}' src="../../image/{{weather.icon}}.png"></image>
+    </view>
+      <view class='date'>今日天气：</view>
+      <view class='more'><text decode>&nbsp;&nbsp;</text>{{weather.text}}<text decode>&nbsp;&nbsp;</text>{{city.name}}<text decode>&nbsp;&nbsp;</text>{{weather.temp}}℃<text decode>&nbsp;&nbsp;</text>
+    </view>-->
+
+  </view>
+</view>
+<!-- 拍照功能 需要跳转拍照识别功能 -->
+<view class="part2" bindtap="gotopic">
+  <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/4a028510ae2d9045.png" class="part3image"></image>
+</view>
+<!-- 科普文章板块 -->
+<view class="part1">
+<view class="part1_top">
+<button plain="true"
+  style="width: 180rpx; height: 150rpx; display: block; box-sizing: border-box; position: relative; left: -267rpx; top: 6rpx">
+  <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/0ad66c471c0f289e.jpg" class="icon"></image>
+</button>
+<!-- 病虫害专区 需要跳转相应文章 -->
+ <button plain="true" style="width: 180rpx; height: 150rpx; display: block; box-sizing: border-box; left: -87rpx; top: -144rpx; position: relative" bindtap="gotoessay"><image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/2c0f5f0ae6050485.jpg" class="icon"></image></button>
+ <!-- 种植专区 需要跳转相应文章 -->
+ <button plain="true" style="width: 180rpx; height: 150rpx; display: block; box-sizing: border-box; left: 93rpx; top: -292rpx; position: relative" bindtap="gotoessay"><image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/4448630f42c0a474.jpg" class="icon"></image></button>
+ <!-- 更多文章 需要跳转相应文章 -->
+ <button plain="true" style="width: 180rpx; height: 150rpx; display: block; box-sizing: border-box; left: 272rpx; top: -441rpx; position: relative" bindtap="doSearch"><image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/cc2e58863ee468f7.jpg" class="icon"></image></button>
+ </view>
+ <!-- 三个特色介绍 无需跳转 -->
+<view class="part1_bottom">
+<image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/0af6018efa751d0f.png" class="tips"></image>
+<image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/b7f1754a936aecf4.png" class="tips"></image>
+<image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/47ce793f854f9013.png" class="tips"></image>
+</view>
+</view>
+<!-- 专家选择功能 需要跳转专家列表 -->
+<view class="part3" bindtap="gotochoose">
+  <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/f8032dacd11ccf12.png" class="part3image"></image>
+</view>
+  <view class="part3-bottom" class="zhuanjia">
+  <!-- 跳转至专家1 -->
+  <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/64ad77b47be498da.png" class="zhuanjia"></image>
+   <!-- 跳转至专家2 -->
+  <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/a79593801464ade5.png" class="zhuanjia"></image>
+   <!-- 跳转至专家3 -->
+  <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/01/3dacecf24307cb9b.png" class="zhuanjia"></image>
+</view>
+
+
+
+
+
+

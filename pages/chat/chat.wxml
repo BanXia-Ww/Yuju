@@ -1,0 +1,171 @@
+<!--pages/index/to_news/to_news.wxml-->
+<view class='top-content'>
+  <!-- <image src='images/back.png' class='back-icon' bindtap='back'></image> -->
+  <view class='new_top_txt'>--------您正在与{{tabdata.nickname}}进行沟通--------</view>
+</view>
+<view class='news'>
+
+  <view class="historycon">
+    <scroll-view scroll-y="true" class="history">
+      <block wx:for="{{messageList}}" wx:for-item="item">
+        <!-- 聊天文字将展示在这里 -->
+        <view wx:if="{{item.type==0}}">
+          <!-- 此处为other 对方发送 -->
+          <view wx:if='{{item.from != openid}}'>
+            <view>
+              <text class='chat-time'>{{item.time}}</text>
+            </view>
+
+            <view class='other-record'>
+              <!-- <image class='other-head-img' src='images/headimg.png'></image> -->
+              <view class='own-record-img'>
+                <open-data type="userAvatarUrl"></open-data>
+                <!-- <image class='own-record-img' src="https://s1.328888.xyz/2022/05/09/4So9O.jpg" alt="4So9O.jpg"></image> -->
+              </view>
+              <view class='other-record-content-triangle'></view>
+              <view class='other-record-content'>
+                {{item.text}}
+              </view>
+              <!-- 用户头像 -->
+
+            </view>
+          </view>
+          <!-- other结尾 -->
+          <!-- 此处为own 己方发送 -->
+          <view wx:else>
+            <view>
+              <text class='chat-time'>{{item.time}}</text>
+            </view>
+            <view class='own-record'>
+              <view class='own-record-content'>{{item.text}}</view>
+              <view class='own-record-content-triangle'></view>
+              <!-- 用户头像 -->
+              <view class='own-record-img'>
+                <open-data type="userAvatarUrl"></open-data>
+                <!-- <image class='own-record-img' src="https://s1.328888.xyz/2022/05/09/4So9O.jpg" alt="4So9O.jpg"></image> -->
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 聊天图片将展示在这里 -->
+        <view wx:elif="{{item.type==1}}">
+          <!-- 此处为other 对方发送 -->
+          <view wx:if='{{item.from != openid}}'>
+            <view>
+              <text class='chat-time'>{{item.time}}</text>
+            </view>
+            <view class='other-record'>
+              <!-- <image class='other-head-img' src='images/headimg.png'></image> -->
+              <view class='other-record-content-triangle'></view>
+              <!-- <view class='other-record-content'>
+                {{item.text}}
+              </view> -->
+              <view>
+                <image class='own-img' src="{{item.text}}" bindtap='clickImg' data-imgurl="{{item.text}}"></image>
+              </view>
+              <!-- 用户头像 -->
+              <view class='own-record-img'>
+                <open-data type="userAvatarUrl"></open-data>
+                <!-- <image class='own-record-img' src="https://s1.328888.xyz/2022/05/09/4So9O.jpg" alt="4So9O.jpg"></image> -->
+              </view>
+            </view>
+          </view>
+          <!-- other结尾 -->
+          <!-- 此处为own 己方发送 -->
+          <view wx:else>
+            <view>
+              <text class='chat-time'>{{item.time}}</text>
+            </view>
+            <view class='own-record'>
+              <view>
+                <image class='own-img' src="{{item.text}}" bindtap='clickImg' data-imgurl="{{item.text}}"></image>
+              </view>
+              <!-- 用户头像 -->
+              <view class='own-record-img'>
+                <open-data type="userAvatarUrl"></open-data>
+                <!-- <image class='own-record-img' src="https://s1.328888.xyz/2022/05/09/4So9O.jpg" alt="4So9O.jpg"></image> -->
+              </view>
+            </view>
+          </view>
+        </view>
+        
+        <view wx:elif="{{item.type==2}}">
+          <!-- 此处为other 对方发送 -->
+          <view wx:if='{{item.from != openid}}'>
+            <view>
+              <text class='chat-time'>{{item.time}}</text>
+            </view>
+            <view class='other-record'>
+              <!-- <image class='other-head-img' src='images/headimg.png'></image> -->
+              <view class='other-record-content-triangle'></view>
+             
+              <view>
+                <video class='own-img' src="{{item.text}}" ></video>
+              </view>
+              <!-- 用户头像 -->
+              <view class='own-record-img'>
+                <open-data type="userAvatarUrl"></open-data>
+               
+              </view>
+            </view>
+          </view>
+          <!-- other结尾 -->
+          <!-- 此处为own 己方发送 -->
+          <view wx:else>
+            <view>
+              <text class='chat-time'>{{item.time}}</text>
+            </view>
+            <view class='own-record'>
+              <view>
+                <video  class='own-img'  src="{{item.text}}" ></video>
+              </view>
+              <!-- 用户头像 -->
+              <view class='own-record-img'>
+                <open-data type="userAvatarUrl"></open-data>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- own结尾 -->
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<view class='hei' id="hei"></view>
+<view class="sendmessage">
+  <view style="width: 100%;height: 48px; display: flex;flex-direction: row;">
+    <view>
+      <input style="width: 584rpx; height: 76rpx; margin-left: 5px; display: block; box-sizing: border-box" class="chat-input" type="emoji" bindinput="bindChange" confirm-type="done" value='{{input}}' placeholder="" />
+    </view>
+    <view>
+      <button class="btn" type="primary" plain="true" bindtap='send' style="position: relative; left: 15rpx; top: 0rpx; width: 122rpx; height: 75rpx; display: block; box-sizing: border-box">发送</button>
+    </view>
+    <!-- <input style='display:none' type="" bindinput="bindChange" confirm-type="done" placeholder="" /> -->
+  </view>
+  <view style="width: 100%;height: 42px;margin-bottom: 10px; display: flex;flex-direction: row;">
+    <view style="width: 24%; height: 40px; margin-left: 4%;">
+      <view style="width: 100%; height: 100%;">
+        <image class='jiahao' bindtap="upimg1" src='https://s3.bmp.ovh/imgs/2022/06/22/51ca06badb4ac22a.png' style="width: 62%; height: 95%; display: inline-block; box-sizing: border-box"></image>
+      </view>
+      <view style="font-size: 12px;color: #a8a8a8; margin-left: 15%; margin-top: 2px;"><text>照片</text></view>
+    </view>
+    <view style="width: 24%; height: 40px; margin-left: 4%;">
+      <view style="width: 100%; height: 100%;">
+        <image class='jiahao' bindtap="upimg1" src='https://s3.bmp.ovh/imgs/2022/06/22/83ccad03cfd64235.png' style="width: 62%; height: 95%; display: inline-block; box-sizing: border-box"></image>
+      </view>
+      <view style="font-size: 12px;color: #a8a8a8; margin-left: 15%; margin-top: 2px;"><text>拍摄</text></view>
+    </view>
+    <view style="width: 24%; height: 40px; margin-left: 4%;">
+      <view style="width: 100%; height: 100%;">
+        <image class='jiahao' bindtap="upvideo" src='https://s3.bmp.ovh/imgs/2022/06/23/e2e61d8688740272.png' style="width: 62%; height: 95%; display: inline-block; box-sizing: border-box"></image>
+      </view>
+      <view style="font-size: 12px;color: #a8a8a8; margin-left: 15%; margin-top: 2px;"><text>视频</text></view>
+    </view>
+    <view style="width: 24%; height: 40px; margin-left: 4%;">
+      <view style="width: 100%; height: 100%;">
+        <image class='jiahao' bindtap="" src='https://s3.bmp.ovh/imgs/2022/06/22/6bc66581fc9650d1.png' style="width: 62%; height: 95%; display: inline-block; box-sizing: border-box"></image>
+      </view>
+      <view style="font-size: 12px;color: #a8a8a8; margin-left: 15%; margin-top: 2px;"><text>语音</text></view>
+    </view>
+  </view>
+</view>

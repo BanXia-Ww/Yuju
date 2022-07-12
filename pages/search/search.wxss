@@ -1,0 +1,135 @@
+/* pages/essaylist/essaylist.wxss */
+.nav_search{
+  width: 100vw;
+  padding: 10px 15px;
+  height: 56px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.nav_search .input_panel {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  background: #F5F5F5;
+  border-radius: 20px;
+  height: 36px;
+  padding: 0 10px 0 20px;
+  color: #999;
+}
+
+.nav_search .input_panel input {
+  font-size: 14px;
+  padding-left: 10px;
+  flex-grow: 1;
+  color: #333;
+}
+
+.nav_search .search{
+  font-size: 17px;
+  color:rgb(235, 155, 135);
+  padding-left: 15px;
+}
+
+.nav_search .cancle{
+  font-size: 17px;
+  color: #333333;
+  padding-left: 15px;
+}
+.nav_search .cancle:active{
+  opacity: 0.7
+}
+/* 点击搜索栏显示相关标签的样式 */
+.detail-bottom{
+  background-color: #f4f4f4;
+}
+.lk{
+  width: 100%;
+  height: 8rpx;
+  color: #000;
+}
+.zj{
+  margin-top: 20rpx;
+  background-color: #f4f4f4;
+}
+.title_zj{
+  text-align: left;
+  font-size: 14px;
+  padding-left: 30rpx;
+  padding-top: 15rpx;
+  color: #666;
+  background-color: #fff;
+}
+.hr{
+  margin-left: 10rpx;
+  margin-right: 30rpx;
+  margin-top: 15rpx;
+  height: 1.4px;
+  background-color: #f0f0f0;
+  /* opacity: 0.4; */
+}
+.hr1{
+  width: 80%;
+  margin-left: 16%;
+  height: 1.3px;
+  background-color: #f0f0f0;
+}
+.box1{
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  padding-left: 30rpx;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+}
+
+.box1 image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+}
+.img{
+  width: 90rpx;
+  height: 80rpx;
+}
+.box1 text{
+  padding-top: 18rpx;
+  padding-left: 30rpx;
+  font-size: 15px;
+}
+.box2{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+.box2_1{
+  text-align: top;
+  width: 270px;
+	height: 20px;
+	position:relative;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.box2_1 text{
+  font-size: 14px;
+}
+.box2_2{
+  text-align: bottom;
+  width: 265px;
+	height: 18px;
+	position:relative;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.box2_2 text{
+  font-size: 11px;
+}

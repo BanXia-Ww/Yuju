@@ -1,0 +1,68 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/chat/chat",
+    "pages/pic/pic",
+    "pages/chatlist/chatlist",
+    "pages/logs/logs",
+    "pages/weather/weather",
+    "pages/choose/choose",
+    "pages/essay/essay",
+    "pages/document/document",
+    "pages/detail/detail",
+    "pages/duihua/duihua",
+    "pages/add/add",
+    "pages/collect_0/collect_0",
+    "pages/search/search"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#F8D86B",
+    "navigationBarTitleText": "育橘",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "icon/home.png",
+        "selectedIconPath": "icon/home1.png"
+      },
+    
+      {
+        "pagePath": "pages/chatlist/chatlist",
+        "text": "咨询",
+        "iconPath": "icon/picture.png",
+        "selectedIconPath": "icon/picture1.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "icon/my.png",
+        "selectedIconPath": "icon/my1.png"
+      }
+    ]
+  },
+  "permission": {
+      "scope.userLocation": {
+          "desc": "你的位置信息将用于小程序位置接口"
+      }
+  },
+  "usingComponents": {
+    "weather": "plugin://weather/weather"
+  },
+  "plugins": {
+      "weather": {
+        "version": "1.1.1",
+        "provider": "wx6578a11b90205be3"
+      }
+    },
+
+  "color": "#8a8a8a",
+  "selectedColor": "ff9016",
+  "sitemapLocation": "sitemap.json"
+  
+}

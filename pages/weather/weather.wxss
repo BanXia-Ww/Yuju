@@ -1,0 +1,16 @@
+.container{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #4D8AD7;
+  color: #fff;
+  font-size: 18px;
+  padding-top: 30rpx;
+  padding-left: 30rpx;
+}
+.container text{
+  display: block;
+  margin: 30px;
+}

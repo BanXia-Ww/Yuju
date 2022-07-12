@@ -1,0 +1,205 @@
+<!--pages/mine/mine.wxml-->
+<!-- 用户登录-->
+<!--<button bindtap="login">登录</button>-->
+<!-- 育橘软件头部 -->
+<view class="head">
+    <!-- 用户头像及昵称获取 -->  
+    <view class="userinfo">
+      <block wx:if="{{canIUseOpenData}}">
+        <view class="userinfo-avatar">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <open-data type="userNickName" class="name"></open-data>
+      </block>
+      <block wx:elif="{{!hasUserInfo}}">
+        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProgile">获取头像昵称</button>
+        <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取头像昵称</button>
+        <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+      </block>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickname}}</text>
+      </block>
+    </view>
+    <!-- 欢迎句子 -->
+    <text class="wellcome">欢迎使用育橘，云助力植柑橘</text>
+    <!-- 背景图 -->
+    <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/03/48c13d1be65f65a4.png" class="headimage"></image>
+</view>
+
+
+<!-- 我的收藏和历史记录模块 -->
+<view class="shoucang">
+    <!-- Tab -->
+    <view class="totall">
+        <view class='{{currentData == 0 ? "active":""}}' data-current="0" bindtap="changeTab">
+            <!-- 标题 -->
+            <view class="title">
+                我的收藏
+            </view>
+        </view>
+        <view class='{{currentData == 1 ? "active":""}}' data-current="1" bindtap="changeTab">
+            <!-- 标题 -->
+            <view class="title">
+                识别历史
+            </view>
+        </view>
+    </view>
+    <!-- Tab下的内容 -->
+    <!-- 标题下的横线 -->
+    <view class="hr2"></view>
+    <!-- 我的收藏模块 -->
+    <view hidden='{{currentData !=0}}'>
+        <!-- 创建新的收藏文件夹 点击跳转到文件夹创建页面：add -->
+        <view class="add" bindtap="gotoadd">
+        <view>创建新分类</view>
+        <view class="right">></view>
+        </view>
+
+        <!-- 收藏夹举例：分类1-柑橘苗挑选类文章 -->
+        <view class="fenlei">
+        <view class="section">
+            <!-- 收藏夹标题部分 -->
+            <view class="section_title">
+                <view class="neirong">
+                    <view>全部文章</view>
+                    <view class="right">></view>
+                </view>
+            </view>
+            <!-- 收藏夹显示的文章内容部分（需要获取文章中的一张图片、文章标题、文章作者） -->
+            <scroll-view scroll-x="true" style="width: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower"
+                bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+                <view class="listimage" wx:for="{{article}}" wx:for-item="essay" wx:for-index="i" data-gid="{{essay.datatype}}" bindtap="gotocollect" wx:if="{{essay.parent==0}}">
+                    <!-- 收藏夹中的文章（点击可以直接跳转到该文章的详情页面） -->
+                    <view >
+                        <view>
+                            <!--文章的图片 -->
+                            <image src="{{essay.firstpic}}"
+                                class="icon" style="width: 210rpx; height: 175rpx;  position:relative;">
+                            </image>
+                            <!--文章的标题 -->
+                            <view class="title_s" >{{essay.title}}</view>
+                            <!--文章的作者 -->
+                            <view class="title_name"><text>作者：{{essay.writer}}</text> 
+                            </view>
+                            <!-- 收藏功能图标 -->
+                            <view class="collect">
+                                <image catchtap='handlCollection' wx:if="{{isCollected}}" style="float: right; width: 19px; height: 18px;" src="img/sc.png"></image>   
+                                <image catchtap='handlCollection' wx:if="{{!isCollected}}" style="float:right; width:19px;height: 18px;" src="img/ysc.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        </view>
+
+        <!-- 收藏夹举例：分类2-种植类文章 -->
+        <view class="fenlei" wx:for="{{folder}}" wx:for-item="file">
+        <view class="section">
+            <!-- 收藏夹标题部分 -->
+            <view class="section_title">
+                <view class="neirong">
+                    <view>{{file.title}}</view>
+                    <view class="right">></view>
+                </view>
+            </view>
+            <!-- 收藏夹显示的文章内容部分（需要获取文章中的一张图片、文章标题、文章作者） -->
+            <scroll-view scroll-x="true" style="width: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower"
+                bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+
+
+                <view class="listimage" wx:for="{{article}}" wx:for-item="essay" wx:for-index="i" data-gid="{{essay.datatype}}" bindtap="gotocollect" wx:if="{{essay.parent==file.id}}">
+                    <!-- 收藏夹中的第一篇文章（点击可以直接跳转到该文章的详情页面） -->
+                    <view >
+                        <view>
+                            <!--第一篇文章的图片 -->
+                            <image src="{{essay.firstpic}}"
+                                class="icon" style="width: 210rpx; height: 180rpx;  position: relative">
+                            </image>
+                            <!--第一篇文章的标题 -->
+                            <view class="title_s" style="margin-top: 8px;">{{essay.title}}
+                            </view>
+                            <!--第一篇文章的作者 -->
+                            <view class="title_name"><text>作者：{{essay.writer}}</text>   
+                            </view>
+                            <!-- 收藏功能图标 -->
+                            <view class="collect">
+                                <image catchtap='handlCollection' wx:if="{{!isCollected}}" style="float: right; width: 19px; height: 18px;" src="img/sc.png"></image>   
+                                <image catchtap='handlCollection' wx:if="{{isCollected}}" style="float:right; width:19px;height: 18px;" src="img/ysc.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        </view>
+    </view>
+
+    <!-- 历史记录模块 -->
+    <view hidden='{{currentData !=1}}'>
+        <view class="bg">
+            <!-- 历史记录显示的内容部分（需要获取每次拍摄的一张图片、识别出来的病虫害标题以及救治方法） -->
+            <view class="container1">
+                <!-- 历史识别的图片以病症内容 -->
+                <view class="item">
+                    <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/03/3c596b9af0aebd8e.jpg" class="photo"></image>
+                    <!--病症的标题 -->
+                    <view class="disease_name" >黄龙病</view>
+                    <!--识别出的病症治理方法 -->
+                    <view class="disease_s"><text>治理：堵源头，种植无病苗：首先要管理好苗木，尽可能杜绝选购携带病虫的苗木，对苗木的进出严格把关，从源头上截断病菌源。保证遭受疫情的果园病害不再加重，刚建立的果园没有病菌为害。</text></view>
+                </view>
+                <view class="item">
+                    <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/03/b6984c47ce52e1c6.jpg" class="photo"></image>
+                    <!--病症的标题 -->
+                    <view class="disease_name" >柑橘裂果原因及防治技术</view>
+                    <!--识别出的病症治理方法 -->
+                    <view class="disease_s"><text>治理：1、增施有机肥，有机无机肥料配合施用，重视中微量元素的使用。在冬季施用基肥的时候，是根系生长的一个高峰期，开沟施用有机肥，能够促进新根的大量发生。</text></view>
+                </view>
+                <view class="item">
+                    <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/03/f976e9eae586aad3.jpg" class="photo"></image>
+                    <!--病症的标题 -->
+                    <view class="disease_name" >炭疽病</view>
+                    <!--识别出的病症治理方法 -->
+                    <view class="disease_s"><text>治理：加强栽培管理，增强树势由于病菌具有潜伏性，防治上要以加强栽培管理、增强树势为重点。</text></view>
+                </view>
+                <view class="item">
+                    <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/03/3c596b9af0aebd8e.jpg" class="photo"></image>
+                    <!--病症的标题 -->
+                    <view class="disease_name" >黄龙病</view>
+                    <!--识别出的病症治理方法 -->
+                     <view class="disease_s"><text>治理：堵源头，种植无病苗：首先要管理好苗木，尽可能杜绝选购携带病虫的苗木，对苗木的进出严格把关，从源头上截断病菌源。保证遭受疫情的果园病害不再加重，刚建立的果园没有病菌为害。</text></view>
+                </view>
+                <view class="item">
+                    <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/03/b6984c47ce52e1c6.jpg" class="photo"></image>
+                    <!--病症的标题 -->
+                    <view class="disease_name" >柑橘裂果原因及防治技术</view>
+                    <!--识别出的病症治理方法 -->
+                    <view class="disease_s"><text>治理：1、增施有机肥，有机无机肥料配合施用，重视中微量元素的使用。在冬季施用基肥的时候，是根系生长的一个高峰期，开沟施用有机肥，能够促进新根的大量发生。</text></view>
+                </view>
+                <view class="item">
+                    <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/03/f976e9eae586aad3.jpg" class="photo"></image>
+                    <!--病症的标题 -->
+                    <view class="disease_name" >炭疽病</view>
+                    <!--识别出的病症治理方法 -->
+                    <view class="disease_s"><text>治理：加强栽培管理，增强树势由于病菌具有潜伏性，防治上要以加强栽培管理、增强树势为重点。</text></view>
+                </view>
+                <view class="item">
+                    <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/03/3c596b9af0aebd8e.jpg" class="photo"></image>
+                    <!--病症的标题 -->
+                    <view class="disease_name" >黄龙病</view>
+                    <!--识别出的病症治理方法 -->
+                    <view class="disease_s"><text>治理：堵源头，种植无病苗：首先要管理好苗木，尽可能杜绝选购携带病虫的苗木，对苗木的进出严格把关，从源头上截断病菌源。保证遭受疫情的果园病害不再加重，刚建立的果园没有病菌为害。</text></view>
+                </view>
+                <view class="item">
+                    <image src="https://b2.kuibu.net/file/imgdisk/imgs/2022/03/b6984c47ce52e1c6.jpg" class="photo"></image>
+                    <!--病症的标题 -->
+                    <view class="disease_name" >柑橘裂果原因及防治技术</view>
+                    <!--识别出的病症治理方法 -->
+                    <view class="disease_s"><text>治理：1、增施有机肥，有机无机肥料配合施用，重视中微量元素的使用。在冬季施用基肥的时候，是根系生长的一个高峰期，开沟施用有机肥，能够促进新根的大量发生。</text></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+

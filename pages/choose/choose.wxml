@@ -1,0 +1,28 @@
+<!--pages/choose/choose.wxml-->
+
+<view
+  style="position: relative; width: 300rpx; background: #FFF9E9; min-height: 100px; height: 350rpx; display: block; box-sizing: border-box; left: 47rpx; top: 59rpx">
+  <image style="width: 50%;height: 43%;margin-left: 24%;margin-top: 10%; border-radius: 300px;margin-right: 20%;" src = 'https://s3.bmp.ovh/imgs/2022/06/22/f1c179e37ec3c542.jpg'></image>
+  <text style="text-align: center;font-size: 16px;margin-left: 32%;margin-top: 13px;">翁专家</text>
+  <button bindtap="gotochat" style="position: relative; left: 1rpx; top: 29rpx; width: 165rpx; height: 54rpx; display: block; box-sizing: bofrder-box; font-size: 25rpx; background-color: #fbb612; color: #ffffff">立即咨询</button>
+</view>
+
+<view style="position: relative; width: 300rpx; height: 350rpx; background: #FFF9E9; min-height: 100px; left: 387rpx; top: -291rpx">
+  <image style="width: 50%;height: 43%;margin-left: 24%;margin-top: 10%; border-radius: 300px;margin-right: 20%;" src = 'https://s3.bmp.ovh/imgs/2022/06/22/42e376df186e325e.jpg'></image>
+  <text style="text-align: center;font-size: 16px;margin-left: 32%;margin-top: 13px;">林专家</text>
+  <button bindtap="gotochat" style="position: relative; left: 1rpx; top: 29rpx; width: 165rpx; height: 54rpx; display: block; box-sizing: bofrder-box; font-size: 25rpx; background-color: #fbb612; color: #ffffff">立即咨询</button>
+</view>
+
+<view style="position: relative; width: 300rpx; background: #FFF9E9; min-height: 100px; height: 350rpx; display: block; box-sizing: border-box; left: 47rpx; top: -216rpx">
+  <image style="width: 50%;height: 43%;margin-left: 24%;margin-top: 10%; border-radius: 300px;margin-right: 20%;" src = 'https://s3.bmp.ovh/imgs/2022/06/22/6ddddf51465d79b2.jpg'></image>
+  <text style="text-align: center;font-size: 16px;margin-left: 32%;margin-top: 13px;">胡专家</text>
+  <button bindtap="gotochat" style="position: relative; left: 1rpx; top: 29rpx; width: 165rpx; height: 54rpx; display: block; box-sizing: bofrder-box; font-size: 25rpx; background-color: #fbb612; color: #ffffff">立即咨询</button>
+</view>
+
+<view style="position: relative; width: 300rpx; height: 350rpx; background: #FFF9E9; min-height: 100px; left: 387rpx; top: -565rpx">
+  <image style="width: 50%;height: 43%;margin-left: 24%;margin-top: 10%; border-radius: 300px;margin-right: 20%;" src = 'https://s3.bmp.ovh/imgs/2022/06/22/c34320e4fae5f249.jpg'></image>
+  <text style="text-align: center;font-size: 16px;margin-left: 32%;margin-top: 13px;">赵专家</text>
+  <button bindtap="gotochat" style="position: relative; left: 1rpx; top: 29rpx; width: 165rpx; height: 54rpx; display: block; box-sizing: bofrder-box; font-size: 25rpx; background-color: #fbb612; color: #ffffff">立即咨询</button>
+</view>
+
+

@@ -1,0 +1,80 @@
+/* pages/test/test.wxss */
+.content{
+   /* display: flex;  */
+   flex-direction: colum;
+  margin-left: 16px;
+  margin-right: 16px;
+   margin-top: 10rpx;
+   margin-bottom: 30rpx;
+   background-color: #fff;
+   /* border-bottom: 1px solid #ededed;  */
+   border-top: 1px solid #ededed; 
+   padding-bottom: 5px; 
+}
+ .author-date{ 
+  /* margin-top: 10rpx;
+  margin-bottom: 20rpx;
+  margin-left: 10rpx; */
+  margin: 10rpx 0 20rpx 10rpx;
+}
+.first{
+  font-size: 40rpx;
+  font-weight: 650; 
+}
+
+.date{
+  margin-left: 20rpx;
+  vertical-align: middle;
+  margin-bottom: 5px;
+  font-size: 26rpx; 
+}
+.title{
+  font-size: 34rpx;
+  font-weight: 600;
+  color:#333;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+.image{
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 92%;
+  height: 200px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.article-content{
+  margin-bottom: 20px;
+  color: #666;  /*颜色*/
+  font-size: 15px; /*字号*/
+  font-family: "宋体"; /*字体*/
+  /* 段落排版：缩进、行高、文字距离、单词间距、对齐 */
+  text-indent: 2em; /* 缩进 */
+  line-height: 1.5em; /* 行高 */
+  letter-spacing: 3px; /* 中文字距离 || 字母间距 */
+  text-align: center; 
+}
+.article-images{
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.article-text{
+  vertical-align: middle;
+}
+.collect{
+  margin-top: 10px;
+  margin-right: 23px;
+  margin-bottom: 36px;
+  float: right;
+  width: 75px;
+  height: 20px;
+}
+.hr2{
+  margin-top: 12px;
+  width: 100%;
+  height: 1px;
+  background-color: rgb(177, 177, 177);
+  opacity: 0.5;
+}

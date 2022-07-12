@@ -1,0 +1,5 @@
+<!--pages/collect_0/collect_0.wxml-->
+
+<view wx:for="{{list}}" wx:for-item="collect" wx:for-index="i" bindtap="goToCollect_1">
+<button bindtap="showdetial" data-datatype="{{collect.datatype}}" data-id="{{collect.id}}">{{collect.title}}</button>
+</view>

@@ -1,0 +1,21 @@
+<!--pages/test/test.wxml-->
+
+<template name="msgItem">
+<!-- 头部 -->
+        <view class="author-date"> 
+          <text class="first"> {{title}}</text>
+          <text class="date">时间作者：{{writer}}</text>
+        </view>
+      
+  <view>
+   <rich-text class="article-content" nodes="{{text}}"></rich-text>
+  </view>
+
+  <image catchtap='Collect' wx:if="{{!isCollected}}" data-id="{{id}}"
+          data-count="{{i}}" style="float: inline-end; width: 25px; height: 20px;" src='../../image/sc.png'></image>
+    
+  <image catchtap='disCollect' wx:if="{{isCollected}}" data-id="{{id}}" style="float: inline-end; width: 25px; height: 23px;" src='../../image/ysc.png'></image>
+</template>
+
+
+<template is="msgItem" data="{{...item}}"/>
