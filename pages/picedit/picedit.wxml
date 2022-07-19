@@ -1,0 +1,21 @@
+<!--pages/picedit/picedit.wxml-->
+<!-- 画一条线的方法需要在canvas上绑定两个函数：touchstart和touchmove -->
+
+<canvas canvas-id="myCanvas" disable-scroll="true" bindtouchstart="touchStart"
+  bindtouchmove="touchMove" wx:if="{{hasChoosedImg}}" style="height: {{cHeight}}px;  {{cWidth}}px;" />
+<!-- touchstart记录下路线开始的点的坐标，并设置好线的颜色和宽度，然后在touchmove函数中，随着移动事件，记录下来移动过程中的每个点的坐标，这样子就能够得到一条线的路径，并将其存储下来，然后根据每次移动的两个点画出它们的二次贝塞尔曲线（使用ctx.quadraticCurveTo()方法），最后得到一条平滑的涂鸦出来的线条。 -->
+
+<!-- 想要撤回时就可以简单的通过将存储路径数据结构清空最后一个再重新画图，就可以实现撤销的操作啦。 -->
+
+
+<!-- 粗细的调整很简单，直接调整绘制时候的线的粗细就可以实现，颜色的调整则也还是通过调整像素点的rgb值来进行颜色的变动，颜色的rgb变动代码如下： -->
+
+<view class="choose-box" wx:if="{{color}}">
+  <view class="color-box" style="background: {{'rgb(' + r + ', ' + g + ', ' + b + ')'}}; height: {{w}}px; border-radius: {{w/2}}px"></view>
+  <slider min="0" max="255" step="1" show-value="true" activeColor="red" value="{{r}}" data-color="r" bindchange="changeColor"/>
+  <slider min="0" max="255" step="1" show-value="true" activeColor="green" value="{{g}}" data-color="g" bindchange="changeColor"/>
+  <slider min="0" max="255" step="1" show-value="true" activeColor="blue" value="{{b}}" data-color="b" bindchange="changeColor"/>
+</view>
+<!-- 再根据得到的rgb值，用如下代码就可以合成颜色： -->
+
+<!-- let color = `rgb(${r},${g},${b})`; -->

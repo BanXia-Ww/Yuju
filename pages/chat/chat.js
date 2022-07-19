@@ -11,7 +11,7 @@ Page({
     input: null,
     openid: null,
     target_openid: "123",
-    imgUrl:'cloud://cloud1-9gtut834de7141af.636c-cloud1-9gtut834de7141af-1310463563/yezi.jpg'  //图片路径
+    imgUrl: 'cloud://cloud1-9gtut834de7141af.636c-cloud1-9gtut834de7141af-1310463563/yezi.jpg' //图片路径
   },
   onPullDownRefresh: function () {
     var App = getApp()
@@ -38,10 +38,10 @@ Page({
     var that = this;
     wx.chooseMedia({
       count: 1,
-      mediaType:"image",
+      mediaType: "image",
       success: chooseResult => {
         console.log(chooseResult);
-        
+
         wx.uploadFile({
           url: 'http://112.124.37.1:9000/upload', //提交信息至后台 http://112.124.37.1:9000/chat/view
           filePath: chooseResult.tempFiles[0].tempFilePath,
@@ -49,7 +49,7 @@ Page({
           success: function (res) {
             var image = res.data;
             var imageJson = JSON.parse(image);
-            
+
             wx.request({
               url: 'http://112.124.37.1:9000/chat/send',
               data: {
@@ -62,7 +62,7 @@ Page({
                 console.log(res);
                 that.setData({
                   messageList: that.data.messageList.concat(res.data),
-                  
+
                 })
               }
             })
@@ -77,10 +77,10 @@ Page({
     var that = this;
     wx.chooseMedia({
       count: 1,
-      mediaType:"video",
+      mediaType: "video",
       success: chooseResult => {
         console.log(chooseResult);
-        
+
         wx.uploadFile({
           url: 'http://112.124.37.1:9000/upload', //提交信息至后台
           filePath: chooseResult.tempFiles[0].tempFilePath,
@@ -89,7 +89,7 @@ Page({
             console.log(res);
             var video = res.data;
             var videoJson = JSON.parse(video);
-            
+
             wx.request({
               url: 'http://112.124.37.1:9000/chat/send',
               data: {
@@ -102,7 +102,6 @@ Page({
                 console.log(res);
                 that.setData({
                   messageList: that.data.messageList.concat(res.data),
-                  
                 })
               }
             })
@@ -111,6 +110,50 @@ Page({
       }
     })
   },
+
+  uploadSound: function (e) {
+    var App = getApp()
+    var that = this;
+    wx.chooseMessageFile({
+      count: 1,
+      mediaType: "all",
+      success: chooseResult => {
+        console.log(chooseResult);
+
+
+
+        wx.uploadFile({
+          url: 'http://112.124.37.1:9000/upload', //提交信息至后台
+          filePath: chooseResult.tempFiles[0].path,
+          name: 'myFile', //文件对应的参数名字(key)
+          success: function (res) {
+            console.log(res);
+            var video = res.data;
+            var videoJson = JSON.parse(video);
+
+            wx.request({
+              url: 'http://112.124.37.1:9000/chat/send',
+              data: {
+                from: App.globalData.openId,
+                to: that.data.target_openid,
+                type: 3,
+                text: videoJson.data[0].url
+              },
+              success(res) {
+                console.log(res);
+                that.setData({
+                  messageList: that.data.messageList.concat(res.data),
+                })
+              }
+            })
+          }
+        })
+      }
+    })
+
+  },
+
+
   //图片点击预览事件  
   clickImg: function (e) {
     var imgUrl = e.currentTarget.dataset.imgurl;
